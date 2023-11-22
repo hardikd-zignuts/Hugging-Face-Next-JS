@@ -1,13 +1,12 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState, useEffect, useRef, useCallback } from "react";
 
 export default function Home() {
-  /* TODO: Add state variables */
-
-  // Keep track of the classification result and the model loading status.
   const [result, setResult] = useState<any>(null);
   const [ready, setReady] = useState<any>(null);
+  const router = useRouter();
 
   // Create a reference to the worker object.
   const worker = useRef(null) as any;
@@ -54,6 +53,12 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-center p-12">
       <h1 className="text-5xl font-bold mb-2 text-center">Transformers.js</h1>
       <h2 className="text-2xl mb-4 text-center">Next.js template</h2>
+      <button
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-3"
+        onClick={() => router.push("/using-api")}
+      >
+        Using API -{">"}
+      </button>
 
       <input
         className="w-full max-w-xs p-2 border border-gray-300 rounded mb-4"
